@@ -1,5 +1,6 @@
 import socket
 import threading
+import pickle
 
 nickname = input("Choose a nickname: ")
 
@@ -9,9 +10,9 @@ client.connect(('127.0.0.1', 1234))
 def receive():
 	while True:
 		try:
-			message = client.recv(1024).decode('ascii')
+			message = pickle.loads(client.recv(1024))
 			if message == "NICK":
-				client.send(nickname.encode('ascii'))
+				client.send(pickle.dumps(nickname))
 			else:
 				print(message)
 		except:
@@ -22,7 +23,8 @@ def receive():
 def write():
 	while True:
 		message = f"{nickname}: {input('')}"
-		client.send(message.encode('ascii'))
+		client.send(pickle.dumps(message))
+
 
 receive_thread = threading.Thread(target=receive)
 receive_thread.start()
