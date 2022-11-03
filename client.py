@@ -5,7 +5,7 @@ import pickle
 nickname = input("Choose a nickname: ")
 
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-client.connect(('127.0.0.1', 1234))
+client.connect(("185.227.111.128", 1234))
 
 def receive():
 	while True:

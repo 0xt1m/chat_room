@@ -2,7 +2,7 @@ import threading
 import socket
 import pickle
 
-HOST = '127.0.0.1'
+HOST = "185.227.111.128" # '127.0.0.1' 
 PORT = 1234
 
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
